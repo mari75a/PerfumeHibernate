@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+    <link href="output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="w-12/12 h-[100vh] bg-[url('img/Sophie-background-1400x739.jpg')] bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center">
+        <div class="mb-4 w-4/12">
+            <label for="9cd91634-3619-442f-bbc9-84356eaca15d" class="text-[50px]">Sign IN</label></br>
+            <label for="9cd91634-3619-442f-bbc9-84356eaca15d" id="message"></label>
+          </div>
+        <!-- Text input -->
+
+  
+  
+  <!-- Email input -->
+  <div class="mb-4 w-4/12">
+    <label for="cd650dcf-c100-4d0b-bd3d-e5f5ecc2bf8f">Email</label>
+    <input placeholder="Your email address" type="email" id="email" class="w-full block rounded-lg border dark:border-none dark:bg-neutral-600 py-[9px] px-3 pr-4 text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 focus:outline-none" />
+  </div>
+  
+  
+  <!-- Password input -->
+  <div class="mb-4 w-4/12">
+    <label for="3e443a4c-a9bd-4b27-858f-3cf048eef170">Password</label>
+    <input placeholder="Your password" type="password" id="password" class="w-full block rounded-lg border dark:border-none dark:bg-neutral-600 py-[9px] px-3 pr-4 text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 focus:outline-none" />
+  </div>
+  
+  
+  <!-- Submit Button -->
+  <button onclick="signIn();" class="block mb-4 w-4/12 rounded-full bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0">Submit</button>
+  <button onclick="window.location='signup.html'" class="block mb-4 w-4/12 rounded-full bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0">Don't have an Account</button>
+</div>
+    <script src="script.js"></script>
+    <script src="asserts/js/sign-in.js"></script>
+  <script type="text/javascript" src="../node_modules/tw-elements/js/tw-elements.umd.min.js"></script>
+</body>
+</html>

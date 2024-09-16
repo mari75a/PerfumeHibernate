@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="output.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tw-elements/1.0.0-alpha1/index.min.css" rel="stylesheet" />
+        <title>Perfumes</title>
+        <style>
+            /* Custom styles for the slider handles */
+            input[type="range"]::-webkit-slider-thumb {
+                appearance: none;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: #1d4ed8;
+                /* Tailwind's 'blue-600' */
+                cursor: pointer;
+                border: 2px solid #ffffff;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                appearance: none;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: #1d4ed8;
+                cursor: pointer;
+                border: 2px solid #ffffff;
+            }
+
+            .range-slider {
+                position: relative;
+                height: 2px;
+                background: #e5e7eb;
+                /* Tailwind's 'gray-200' */
+                border-radius: 5px;
+            }
+        </style>
+
+    </head>
+
+    <body onload="loadFeatures();loadData();">
+        <nav
+            class="fixed top-0 z-50 flex w-full items-center justify-between bg-[#e81664] py-2 shadow-dark-mild dark:bg-neutral-700 lg:flex  lg:justify-center lg:items-center "
+            data-twe-navbar-ref>
+            <div class="px-6 ">
+                <button
+                    class="block border-0 bg-transparent px-2 text-black/50 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+                    type="button" data-twe-collapse-init data-twe-target="#navbarSupportedContent4"
+                    aria-controls="navbarSupportedContent4" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="[&>svg]:w-7 [&>svg]:stroke-black/50 dark:[&>svg]:stroke-neutral-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                              clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+                     id="navbarSupportedContent4" data-twe-collapse-item>
+                    <ul class="me-auto flex flex-row" data-twe-navbar-nav-ref>
+                        <li data-twe-nav-item-ref>
+                            <a class="block py-2 pe-2 text-white transition duration-200 text-[20px] hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                               href="index.html">Perfumerie</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto" id="navbarSupportedContent5"
+                 data-twe-collapse-item>
+                <ul class="me-auto flex flex-row" data-twe-navbar-nav-ref>
+                    
+                    <li data-twe-nav-item-ref>
+                        <a class="block py-2 pe-2 text-white transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                           href="perfumes.html">Perfumes</a>
+                    </li>
+
+                    
+                </ul>
+            </div>
+
+            <div class="flex justify-between items-center w-2/12 px-4">
+                <img src="icons/magnifying-glass.png" class="w-[30px] h-[30px] text-white " alt="">
+
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                        class="text-white    focus:ring-blue-300 font-medium rounded-lg text-sm  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button"><img src="icons/user.png" class="w-[25px] h-[25px] text-white " alt=""><svg
+                        class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 1 4 4 4-4" />
+                    </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <a href="myaccount.html"
+                               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                        </li>
+                        
+                        <li>
+                            <a onclick="signout();" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                out</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div class="text-center">
+                    <button onclick="loadCartItems();"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example"
+                            aria-controls="drawer-example">
+                        <img src="icons/shopping-bag.png" class="w-[25px] h-[25px] text-white " alt="">
+                    </button>
+                </div>
+                <!-- drawer component -->
+                <div id="drawer-example"
+                     class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-4/12 dark:bg-gray-800"
+                     tabindex="-1" aria-labelledby="drawer-label">
+                    <h5 id="drawer-label"
+                        class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg
+                            class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>Cart</h5>
+                    <button type="button" data-drawer-hide="drawer-example" aria-controls="drawer-example"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                    <div class="w-12/12 flex flex-col h-[80vh]" id="cart-item-container">
+                        <div class="w-12/12 bg-body flex" id="cart-item-row">
+                            <div class="w-4/12  ">
+                                <img id="cart-item-image" style="height:150px; "  src="">
+                            </div>
+                            <div class="w-8/12 p-3">
+                                <div id="cart-item-title"> </div>
+                                <div class="flex justify-start items-center">
+                                                             
+                                    <div >රු<span id="cart-item-price"></span></div>
+                                    <div>*<span id="cart-item-qty"> </span></div>
+                                    
+                                </div>
+                                <div
+                                    class="bg-red-400 outline-white text-center text-white rounded-sm w-4/12 hover:bg-red-600 cursor-pointer" id="removebtn">
+                                    Remove</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="w-12/12 h-[20vh]">
+                        
+                        <div class="w-full flex">
+                         <div class="w-6/12 text-[20px]">Sub Total</div>
+                         <div class="w-6/12 text-end text-[20px]">රු<span id="cart-item-total">1,500</span></div> </div>
+                         <div class="w-full flex bg-blue-500 text-center text-white text-[20px] font-bold p-3" onclick="window.location='checkout.html'">
+                            CheckOut
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </nav>
+        <div class="w-full bg-black h-[50vh] flex flex-col items-center justify-center">
+            <img src="img/Sophie-background-1400x739.jpg" class="absolute bg-cover w-full h-[50vh]">
+            <div class="absolute text-center">
+                <div class="text-[40px] font-bold">Perfume</div>
+                <div class=" text-[20px] ">Looking for fragrence</div>
+            </div>
+
+
+        </div>
+        <div class="w-12/12 flex p-5">
+            <div class="w-2/12   p-5 outline outline-gray-100 rounded-lg mt-2">
+                <div class="text-center text-[20px]">Filters</div>
+                <label id="message"></label>
+                <input placeholder="Search here" type="email" id="search" class="w-full block rounded-lg border dark:border-none dark:bg-neutral-600 py-[9px] px-3 pr-4 text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 focus:outline-none" />
+                <select id="categoryList" onchange="updateModels()" onselect="updateModels()"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Choose a category</option>
+
+                </select>
+
+
+                <select id="brandList" 
+                        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Choose a Brand</option>
+
+                </select>
+
+
+                <select id="sizeList" 
+                        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Choose a size</option>
+
+                </select>
+                <input placeholder="Min value" type="number" step="100" id="min" value="0" name="points" min="0" max="1000" class="w-full block rounded-lg border dark:border-none dark:bg-neutral-600 py-[9px] px-3 pr-4 text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 focus:outline-none" />
+                <input placeholder="max value" type="number" step="100" id="max" value="10000" min="1000" max="10000" class="w-full block rounded-lg border dark:border-none dark:bg-neutral-600 py-[9px] px-3 pr-4 text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 focus:outline-none" />
+                <div class="p-4 bg-blue-500 text-center text-white font-bold rounded-md mt-5" onclick="searchProducts(0);">Search</div>
+                <div class="p-4 bg-blue-500 text-center text-white font-bold rounded-md mt-5" onclick="window.location.reload();">Reset</div>
+            </div>
+            <div class="w-1/12"></div>
+            <div class="w-9/12">
+                <div class="w-12/12 flex justify-end">
+                    <div class="category-select align-items-center justify-content-lg-end justify-content-between">
+                                            <!-- Start Single Select  -->
+                                            <span class="filter-results">Showing 1-10 of 20 results</span>
+                                            <select id="sort-filter-options" class="single-select">
+                                                <option>Short by Latest</option>
+                                                <option>Short by Oldest</option>
+                                                <option>Short by Name</option>
+                                                <option>Short by Price</option>
+                                            </select>
+                                            <!-- End Single Select  -->
+                                        </div>
+                </div>
+            <div class="w-12/12 grid grid-cols-4 gap-4 mt-[50px]  " style="padding-right:30px; " id="product-container">
+                <div class=" relative  flex flex-col justify-center items-center z-0 " id="product-item" >
+                    <div class=" bg-pink-700 absolute top-2 left-0 z-1 p-2  text-white">Sale</div>
+                    <div id="similar-product-addto-cart" class=" bg-pink-700 absolute top-2 right-0 z-1 p-2  text-white"><img src="icons/shopping-bag.png" class="w-[25px] h-[25px] text-white bg-cover " alt=""></div>
+                    <div class=" my-2 w-11/12    bg-cover">
+                        <img id="cart-item-image" src="product/8/image1.png" class="bg-cover"/>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-gray-500" id="category">Kids</div>
+                        <div class="text-pink-600" id="title">Star Wars Body Spray</div>
+                        <div class="text-gray-700">රු<span  id="price">999</span>.00</div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="st-pagination-container" class="text-center pt--20 ">
+                <a id="st-pagination-button" href="#" class="p-2 rounded-md bg-blue-500 text-white">Prev</a>
+                
+            </div> 
+                </div>
+        </div>
+        <script src="asserts/js/cart.js"></script>
+        <script src="asserts/js/search1.js"></script>
+        <script src="asserts/js/notify.js"></script>
+        <script src="script.js"></script>
+        <script src="asserts/js/my-account.js"></script>
+        <script src="asserts/js/productload.js"></script>
+        <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
+        <script type="text/javascript" src="../node_modules/tw-elements/js/tw-elements.umd.min.js"></script>
+        <script src="asserts/js/signOut.js"></script>
+    </body>
+
+</html>
